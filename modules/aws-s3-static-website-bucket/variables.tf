@@ -4,6 +4,11 @@ variable "bucket_name" {
   default = "ambitionit-2022-website"
 }
 
+variable "folder_name" {
+  description = "folder name"
+  type = string
+}
+
 variable "tags" {
   description = "list of tags"
   type = map(string)

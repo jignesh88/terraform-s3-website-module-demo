@@ -6,11 +6,11 @@ resource "aws_s3_bucket" "s3_bucket" {
 
 resource "aws_s3_bucket_object" "objects" {
   bucket = aws_s3_bucket.s3_bucket.id
-  for_each = fileset("${path.module}/www","*.html")
+  for_each = fileset("${var.folder_name}","*.html")
   key = each.value
   acl = "public-read"
-  source = "${path.module}/www/${each.value}"
-  etag = filemd5("${path.module}/www/${each.value}")
+  source = "${var.folder_name}/${each.value}"
+  etag = filemd5("${var.folder_name}/${each.value}")
 }
 
 resource "aws_s3_bucket_website_configuration" "s3_bucket" {
